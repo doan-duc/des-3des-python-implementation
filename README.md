@@ -142,11 +142,5 @@ Nhấn Enter để quay lại Menu...
 
 ---
 
-## 5. Tổng Kết
-
-Trải qua quá trình làm bài và phối hợp cùng nhau, các thành viên trong nhóm đã hoàn thiện trọn vẹn dự án với mức độ tin cậy và hoàn thành rất tốt:
-1. **Phối hợp nhóm hiệu quả:** Công đoạn phát triển đã được chia nhỏ và độc lập theo từng component phần cứng của luồng dữ liệu (5 module riêng biệt do 5 người viết). Việc lắp ráp dưới bàn tay của Mem 5 cho thấy cấu trúc hướng đối tượng và liên kết file trong Python hoạt động vững chắc.
-2. **Giá trị kỹ thuật đạt được:** Không chỉ là một ứng dụng giao diện đơn thuần, dự án mã nguồn thỏa mãn mọi vector test (KAT) của chuẩn NIST một cách toàn vẹn qua hai file kiểm thử ECB và CBC, minh chứng cho sự tự cài đặt thuật toán không có điểm mù hay lỗi dịch bit nào.
-3. **Tính ứng dụng cao:** Hệ thống CLI mượt mà được trang bị đủ tính năng đệm PKCS#7 để mã hóa/giải mã những đoạn văn bản thô tuỳ ý của người dùng, biến đây trở thành một tool hoàn chỉnh phục vụ thực tế ngoài đời thực.
 
 *Cảm ơn đã theo dõi và sử dụng bộ mã nguồn này!*
