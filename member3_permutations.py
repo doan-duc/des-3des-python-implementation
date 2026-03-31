@@ -1,6 +1,6 @@
 
 from typing import List, Tuple
-from member4_sbox import E_TABLE  # type: ignore
+from member4_sbox import E_TABLE  
 #  BANG HOAN VI KHOI TAO IP 
 # IP: 64-bit plaintext  sap xep lai cac bit theo thu tu co dinh
 IP: List[int] = [
@@ -44,7 +44,7 @@ def permute(bits: int, table: List[int], input_size: int) -> int:
     result = 0
     output_size = len(table)
     for i in range(output_size):
-        bit_pos = table[i]                       # Vi tri bit can lay (1-indexed)
+        bit_pos = table[i]                       # Vi tri bit can lay 
         shift_in = input_size - bit_pos          # Dich phai de lay bit do
         bit_val = (bits >> shift_in) & 1         # Gia tri bit (0 hoac 1)
         shift_out = output_size - 1 - i          # Vi tri trong ket qua
@@ -57,7 +57,7 @@ def initial_permutation(block_64: int) -> int:
     """
     Ap dung hoan vi IP len block 64-bit dau vao.
     Bien doi: block 64-bit goc -> block 64-bit sau IP
-    Sau do tach thanh:
+    tach thanh:
         L0 = 32 bit 
         R0 = 32 bit 
     """
@@ -98,11 +98,11 @@ def feistel_round(
 ) -> Tuple[int, int]:
     """
     Thuc hien 1 vong  Feistel 
-        L        : int    - nua trai 32-bit hien tai
-        R        : int    - nua phai 32-bit hien tai
+        L        : int    - nua trai 32-bit 
+        R        : int    - nua phai 32-bit 
         subkey   : int    - subkey 48-bit cho vong nay
-        sbox_fn  : object - ham tra S-box tu Thanh vien 4
-        round_num: int    - so thu tu vong (de in debug)
+        sbox_fn  : object - ham tra S-box 
+        round_num: int    - so thu tu vong 
         verbose  : bool   - in chi tiet tung buoc
 
     Tra ve: (L_new, R_new)  hai so nguyen 32-bit
