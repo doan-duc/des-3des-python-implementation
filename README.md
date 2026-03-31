@@ -75,6 +75,7 @@ BTL_ATTT/
 ├── member5_rounds.py              # Module: Lõi dịch bit (Mạng Feistel, 16 Rounds)
 ├── test_KAT.py                    # Script: Tự động tải file trong KAT_TDES để chạy test
 │
+├── requirements.txt               # Danh sách thư viện cần thiết để chạy/build (Python >=3.8, pyinstaller)
 ├── .gitignore                     # Tệp cấu hình GitHub
 ├── DES_Simulator_2026.spec        # Tệp cấu hình để PyInstaller build ra file .exe
 ├── LICENSE                        # Giấy phép mã nguồn mở (MIT License)
