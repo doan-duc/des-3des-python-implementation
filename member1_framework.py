@@ -382,4 +382,4 @@ def display_block_info(label: str, block: DESBlock) -> None:
     bin_full = block.to_bin_str()
     bin_preview = "".join(list(bin_full)[k] for k in range(32))
     print(f"  {label:<22}: {block.to_hex_str()}  (bin: {bin_preview}...)")
-
+    #commit
