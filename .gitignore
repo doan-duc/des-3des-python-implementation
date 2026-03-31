@@ -25,7 +25,7 @@ Thumbs.db
 # (Lưu ý: folder `dist/` hiện KHÔNG bị ignore. 
 # Nếu bạn không muốn đưa file `DES_Simulator_2026.exe` (rất nặng) lên GitHub, 
 # hãy bỏ dấu '#' ở dòng dưới đây nhé)
-dist/
+# dist/
 
 # Bỏ qua các file code của thành viên 1, 2, 3, 4 theo yêu cầu
 member1_framework.py
