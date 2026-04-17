@@ -1,21 +1,12 @@
-// Include khai bao ham encrypt_file/decrypt_file.
 #include "inout.hpp"
-// Include API ma hoa/giai ma block duoc dung ben duoi.
 #include "../ModeTDES/TDES.hpp"
-
-// Dung ifstream/ofstream de doc ghi file nhi phan.
 #include <fstream>
-// Dung iterator de doc toan bo file vao vector mot cach gon.
 #include <iterator>
-// Dung vector<uint8_t> de luu du lieu nhi phan.
 #include <vector>
 
-// Rut gon cu phap std:: trong file implementation nay.
 using namespace std;
 
-// Dat implementation trong namespace chung cua du an.
 namespace des_sim {
-
 // Ham ma hoa noi dung file dau vao va ghi ket qua ra file dau ra.
 map<string, double> encrypt_file(
     const string& input_path, const string& output_path, const TripleDESKey& key, bool use_3des
