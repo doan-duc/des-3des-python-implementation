@@ -18,15 +18,18 @@ const string YELLOW = "\033[93m";
 const string RED = "\033[91m";
 const string RESET = "\033[0m";
 
+// In chuỗi văn bản ra màn hình console với màu sắc tương ứng
 void cprint(const string& text, const string& color) {
     cout << color << text << RESET << "\n";
 }
 
+// Chuyển toàn bộ ký tự trong chuỗi thành chữ in hoa
 string to_upper_ascii(string s) {
     for (char& c : s) c = static_cast<char>(toupper(static_cast<unsigned char>(c)));
     return s;
 }
 
+// Yêu cầu người dùng nhập và kiểm tra xem đầu vào có nằm trong danh sách hợp lệ không
 string read_choice(const string& prompt, const vector<string>& valid) {
     while (true) {
         cout << "\n" << BOLD << prompt << RESET;
@@ -39,6 +42,7 @@ string read_choice(const string& prompt, const vector<string>& valid) {
     }
 }
 
+// Yêu cầu người dùng nhập 'y' (Đồng ý/Yes) hoặc 'n' (Từ chối/No)
 bool read_yes_no(const string& prompt) {
     while (true) {
         cout << prompt;
@@ -53,6 +57,7 @@ bool read_yes_no(const string& prompt) {
     }
 }
 
+// Yêu cầu nhập và xác thực khóa DES (bắt buộc đúng 16 ký tự Hex)
 DESKey input_des_key(const string& label) {
     while (true) {
         cprint("  Nhap khoa " + label + " (16 ky tu hex):", BOLD);
@@ -67,6 +72,7 @@ DESKey input_des_key(const string& label) {
     }
 }
 
+// Giao diện nhập 3 khóa (nếu dùng Triple DES) hoặc 1 khóa (nếu dùng DES thường)
 TripleDESKey input_key_prompt(bool use_3des) {
     if (use_3des) {
         cprint("\n--- NHAP 3 KHOA CHO 3DES ---", BOLD);
@@ -79,6 +85,7 @@ TripleDESKey input_key_prompt(bool use_3des) {
     return TripleDESKey(k, k);
 }
 
+// Menu cho phép chọn chế độ mã hóa theo khối (ECB hoặc CBC)
 string get_mode_choice() {
     cout << "\n  Chon che do ma hoa (Block Mode):\n";
     cout << "  1. ECB (Electronic Codebook)\n";
@@ -87,6 +94,7 @@ string get_mode_choice() {
     return c == "1" ? "ECB" : "CBC";
 }
 
+// Yêu cầu nhập Vector khởi tạo (IV) dùng trong chế độ CBC
 uint64_t get_iv_input() {
     while (true) {
         cprint("\n  Nhap Vector khoi tao IV (16 ky tu hex):", BOLD);
@@ -103,6 +111,7 @@ uint64_t get_iv_input() {
     }
 }
 
+// Menu chọn định dạng đầu vào (Văn bản hoặc Hex) và đọc dữ liệu cần mã hóa
 vector<uint8_t> read_encrypt_input(bool& ok) {
     cout << "\n  Ban muon nhap gi?\n";
     cout << "  1. Van ban (Text/String)\n";
@@ -128,6 +137,7 @@ vector<uint8_t> read_encrypt_input(bool& ok) {
     return vector<uint8_t>(text.begin(), text.end());
 }
 
+// Kiểm tra xem dữ liệu giải mã ra có đúng chuẩn định dạng văn bản UTF-8 hay không
 bool is_valid_utf8(const vector<uint8_t>& data) {
     size_t i = 0;
     while (i < data.size()) {
@@ -164,13 +174,14 @@ bool is_valid_utf8(const vector<uint8_t>& data) {
     return true;
 }
 
-
+// Chuyển mảng byte dữ liệu thành chuỗi Hex in hoa
 string bytes_to_hex(const vector<uint8_t>& data) {
     ostringstream oss;
     for (uint8_t b : data) oss << hex << setw(2) << setfill('0') << uppercase << static_cast<int>(b);
     return oss.str();
 }
 
+// Chuyển chuỗi Hex thành mảng byte dữ liệu
 vector<uint8_t> hex_to_bytes(const string& hex) {
     const string clean = sanitize_hex(hex);
     if (clean.size() % 2 != 0) throw invalid_argument("Hex string length must be even");
@@ -180,6 +191,7 @@ vector<uint8_t> hex_to_bytes(const string& hex) {
     return out;
 }
 
+// Loại bỏ các ký tự thừa trong chuỗi, chỉ giữ lại các ký tự Hex (0-9, a-f, A-F) và in hoa
 string sanitize_hex(const string& input) {
     string out;
     out.reserve(input.size());

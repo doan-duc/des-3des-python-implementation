@@ -8,7 +8,7 @@
 using namespace std;
 
 namespace des_sim {
-
+// Hàm phụ trợ: Làm sạch chuỗi đầu vào bằng cách loại bỏ các ký tự không phải Hex và in hoa các chữ cái
 static string sanitize_key_hex(const string& input) {
 	string out;
 	out.reserve(input.size());
@@ -17,13 +17,13 @@ static string sanitize_key_hex(const string& input) {
 	}
 	return out;
 }
-
+// Khởi tạo khóa DES (64-bit) từ một chuỗi Hex (hệ cơ số 16)
 DESKey DESKey::from_hex(const string& hex_str) {
 	const string clean = sanitize_key_hex(hex_str);
 	if (clean.size() != 16) throw invalid_argument("DES key must be exactly 16 hex characters");
 	return DESKey(stoull(clean, nullptr, 16));
 }
-
+// Trả về chuỗi Hex đại diện cho giá trị của khóa DES
 string DESKey::to_hex_str() const {
 	ostringstream oss;
 	oss << uppercase << hex << setw(16) << setfill('0') << value;
