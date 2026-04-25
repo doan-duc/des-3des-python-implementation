@@ -13,20 +13,10 @@
 #include <string>
 #include <vector>
 
-// Gom cac file logic lai de trinh bien dich hieu duoc noi dung ham
-#include "DataTypes/Block_types.cpp"
-#include "DataTypes/Key_types.cpp"
-#include "Subkeys/DES_subkeys.cpp"
-#include "Subkeys/TDES_subkeys.cpp"
-#include "DES/DES.cpp"
-#include "ModeTDES/TDES.cpp"
-#include "UtilityFunc/utility.cpp"
-
 using namespace std;
 
 int main() {
     using namespace des_sim;
-    // Bat dau vong lap de chuong trinh chay lien tuc den khi minh muon thoat
     while (true) {
 #ifdef _WIN32
         system("cls");
